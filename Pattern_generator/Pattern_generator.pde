@@ -11,13 +11,13 @@ float[]cVal={0, width-q*0, 5};// Declare array
 
 Cell c;  // Declare object
 
-int count = 0; // Start delay
+int count;
 
 void setup() {   
   size(800, 800, P2D);          // P2D Processing 2D graphics renderer
-  frameRate(10);
+  frameRate(30);
   background(0);
-  n = 10;                       // Cells per row
+  n = 5;                       // Cells per row
   q = width/n;                  // Width of cell
   x = 0.5*q;                  // Initial x value
   y = 0.5*q;             // Initial y value
@@ -25,7 +25,7 @@ void setup() {
 }    
 
 
-void draw() { 
+void draw() {
   
   
   if (record) {
@@ -41,13 +41,61 @@ void draw() {
   
   if ((count > 0) && (count < n)) {
     c.build(); 
+    c.rotate_random();
     c.move_right();
   }
 
-  if ((count > n) && (count < n+1)) {
-    c.build();  
+  if ((count > n) && (count < 2*n)) {
+    c.build(); 
+    c.rotate_random();
     c.move_down();
   }
+
+  if ((count > 2*n) && (count < 3*n)) {
+    c.build();  
+    c.rotate_random();
+    c.move_left();
+  }
+
+ if ((count > 3*n) && (count < 4*n-1)) {
+    c.build();  
+    c.rotate_random();
+    c.move_up();
+  }
+
+ if ((count > 4*n-1) && (count < 5*n-2)) {
+    c.build();  
+    c.rotate_random();
+    c.move_right();
+  }
+
+if ((count > 5*n-2) && (count < 6*n-4)) {
+    c.build();  
+    c.rotate_random();
+    c.move_down();
+  }
+
+ if ((count > 6*n-4) && (count < 7*n-6)) {
+    c.build();  
+    c.rotate_random();
+    c.move_left();
+  }
+
+if ((count > 7*n-6) && (count < 8*n-9)) {
+    c.build();  
+    c.rotate_random();
+    c.move_up();
+  }
+
+if ((count > 8*n-9) && (count < 9*n-14)) {
+    c.build();  
+    c.rotate_random();
+    c.move_right();
+  }
+
+
+
+
 
 
 
@@ -72,7 +120,7 @@ void keyPressed() {
     println("[save]");
   }
   if (key == 'r') {
-    count=0;
+    count = 0;
     setup(); 
   }
 }
